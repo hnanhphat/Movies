@@ -1,0 +1,18 @@
+@import "../../scss/style.scss";
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  .img {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 40%;
+    height: 90px;
+  }
+  .info {
+    width: 60%;
+    padding-left: 15px;
+  }
+}

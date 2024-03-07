@@ -1,0 +1,135 @@
+@import "../../scss/style.scss";
+
+.modal {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  transition: $transition;
+  .modal-backdrop {
+    background: rgba($color: $black, $alpha: 0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+  .modal-dialog {
+    background: $primary-black;
+    border-radius: 10px;
+    width: calc(100% - 30px);
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    overflow: auto;
+    z-index: 2;
+    transform: translateY(-60%);
+    transition: $transition;
+    .md-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      &__ttl {
+        color: $white;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      &__close {
+        color: $white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+        font-size: 32px;
+        position: relative;
+
+        @include HOVER {
+          opacity: 0.5;
+        }
+      }
+    }
+    .md-body {
+      .video {
+        font-size: 0;
+        iframe {
+          width: 100%;
+          height: 450px;
+        }
+      }
+      .img {
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 450px;
+      }
+    }
+    .md-footer {
+      display: flex;
+      padding: 20px;
+      &__add {
+        background: $primary-red;
+        border-radius: 5px;
+        color: $white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 186px;
+        height: 40px;
+        font-size: 16px;
+        font-weight: bold;
+        transition: $transition;
+        svg {
+          width: 15px;
+          margin-right: 10px;
+        }
+
+        @include HOVER {
+          opacity: 0.5;
+        }
+      }
+
+      &__more {
+        background: $white;
+        color: $black;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 150px;
+        height: 40px;
+        font-weight: bold;
+        margin-left: 10px;
+        @include SP {
+          font-size: 14px;
+        }
+        svg {
+          margin-right: 10px;
+        }
+        @include SP {
+          width: 128px;
+        }
+        svg {
+          width: 20px;
+          @include SP {
+            width: 16px;
+          }
+        }
+      }
+    }
+  }
+
+  &--active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}

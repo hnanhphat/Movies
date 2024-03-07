@@ -1,0 +1,111 @@
+@import "../../scss/style.scss";
+
+.first-view {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  padding-left: 4vw;
+  position: relative;
+  @include SP {
+    padding: 0 4vw;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    background: linear-gradient(to bottom, transparent, $primary-black);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+  &__container {
+    color: $white;
+    width: 100%;
+    position: relative;
+    .title {
+      font-size: 58px;
+      text-shadow: 2px 2px 4px rgba($color: $primary-black, $alpha: 0.45);
+      @include SP {
+        font-size: 28px;
+      }
+    }
+    .overview {
+      width: 100%;
+      max-width: 600px;
+      font-size: 20px;
+      padding: 30px 0;
+      text-shadow: 1px 1px 2px rgba($color: $primary-black, $alpha: 0.45);
+      @include SP {
+        font-size: 16px;
+      }
+    }
+    .group {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .btn {
+        display: flex;
+        a {
+          border-radius: 5px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 40px;
+          font-weight: bold;
+          @include SP {
+            font-size: 14px;
+          }
+          svg {
+            margin-right: 10px;
+          }
+        }
+        &__play {
+          background: $primary-red;
+          width: 110px;
+          margin-right: 15px;
+          @include SP {
+            width: 90px;
+            margin-right: 10px;
+          }
+          svg {
+            width: 15px;
+            @include SP {
+              width: 12px;
+            }
+          }
+        }
+        &__more {
+          background: $white;
+          color: $black;
+          width: 150px;
+          @include SP {
+            width: 128px;
+          }
+          svg {
+            width: 20px;
+            @include SP {
+              width: 16px;
+            }
+          }
+        }
+      }
+      .rated {
+        background: rgba($color: $white, $alpha: 0.5);
+        border-left: 2px solid $white;
+        display: flex;
+        align-items: center;
+        width: 82px;
+        height: 34px;
+        font-size: 18px;
+        padding-left: 8px;
+        text-shadow: 1px 1px 2px rgba($color: $primary-black, $alpha: 0.45);
+        @include SP {
+          margin-right: -4vw;
+        }
+      }
+    }
+  }
+}

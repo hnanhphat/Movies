@@ -1,0 +1,53 @@
+@import "../../scss/style.scss";
+
+.movie-card {
+  padding: 0 5px;
+  &__box {
+    display: block;
+    width: 100%;
+    position: relative;
+    @include HOVER {
+      opacity: 1;
+      .movie-card__info {
+        opacity: 1;
+        .title {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+  .lazy-load-image-background,
+  &__poster {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: calc(((100vw - 8vw - 60px) / 5) * 281 / 500);
+    margin: 0 auto;
+    @include SP {
+      height: calc(((100vw - 8vw - 10px) / 2) * 281 / 500);
+    }
+  }
+  &__info {
+    position: absolute;
+    background: rgba($color: $primary-black, $alpha: 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    opacity: 0;
+    transform: translateX(-50%);
+    transition: $transition;
+    .title {
+      color: $white;
+      font-size: 1.3vw;
+      padding: 0 10px;
+      transform: translateY(10px);
+      transition: $transition;
+    }
+  }
+}

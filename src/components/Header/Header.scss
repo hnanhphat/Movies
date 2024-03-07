@@ -1,0 +1,214 @@
+@import "../../scss/style.scss";
+
+.header {
+  color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  height: 68px;
+  padding: 0 4%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  transition: $transition;
+  &--scroll {
+    background: $primary-black;
+  }
+  .hd-left {
+    display: flex;
+    &__logo {
+      display: flex;
+      align-items: center;
+      width: 92px;
+      margin-right: 44px;
+      svg {
+        width: 100%;
+        height: auto;
+      }
+    }
+    &__directory {
+      display: flex;
+      @include SP {
+        display: none;
+      }
+      li {
+        &:not(:last-child) {
+          margin-right: 18px;
+        }
+        a {
+          font-size: 12px;
+          position: relative;
+          transition: $transition;
+          &::before {
+            content: "";
+            position: absolute;
+            background: $white;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: $transition;
+          }
+          &.current {
+            font-weight: bold;
+            &::before {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+  .hd-right {
+    height: 100%;
+    &__personal {
+      display: flex;
+      height: 100%;
+      li {
+        height: 100%;
+        &:not(:first-child) {
+          margin-left: 18px;
+        }
+        a {
+          display: flex;
+          align-items: center;
+          height: 100%;
+          svg {
+            width: 17px;
+          }
+          .avatar {
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            border-radius: 5px;
+            width: 32px;
+            height: 32px;
+            overflow: hidden;
+          }
+          .caret {
+            width: 10px;
+            height: 5px;
+            margin-left: 10px;
+            position: relative;
+            &::before {
+              content: "";
+              position: absolute;
+              border-top: 5px solid $white;
+              border-left: 5px solid transparent;
+              border-right: 5px solid transparent;
+            }
+          }
+        }
+        form {
+          display: flex;
+          align-items: center;
+          height: 100%;
+          position: relative;
+          input {
+            background: $primary-black;
+            border: 2px solid $white;
+            color: $white;
+            width: 0;
+            height: 34px;
+            padding: 10px;
+            opacity: 0;
+            transition: $transition;
+            &::placeholder {
+              color: rgba($color: $white, $alpha: 0.5);
+            }
+
+            &:focus {
+              width: 258px;
+              opacity: 1;
+              padding-left: 32px;
+            }
+          }
+          button {
+            color: $white;
+            position: absolute;
+            top: calc(50% + 2px);
+            left: 6px;
+            transform: translateY(-50%);
+            svg {
+              width: 17px;
+            }
+          }
+
+          @include HOVER {
+            input {
+              width: 258px;
+              opacity: 1;
+              padding-left: 32px;
+            }
+          }
+        }
+      }
+
+      .dropdown {
+        position: relative;
+        &::before {
+          content: "";
+          position: absolute;
+          border-bottom: 5px solid $white;
+          border-left: 5px solid transparent;
+          border-right: 5px solid transparent;
+          bottom: 8px;
+          left: 50%;
+          opacity: 0;
+          transform: translate(-50%, 5px);
+          transition: $transition;
+        }
+        &__list {
+          background: $primary-black;
+          border-top: 3px solid $white;
+          position: absolute;
+          width: 420px;
+          height: 520px;
+          top: 100%;
+          right: 0;
+          overflow: auto;
+          padding-bottom: 20px;
+          transform-origin: right top;
+          transform: scale(0);
+          transition: $transition;
+        }
+        &__btn {
+          background: $primary-red;
+          border-radius: 5px;
+          color: $white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 180px;
+          height: 40px;
+          font-size: 16px;
+          font-weight: bold;
+          margin: 20px auto 0;
+          transition: $transition;
+          svg {
+            width: 16px;
+            margin-right: 15px;
+          }
+          @include HOVER {
+            svg {
+              animation: spin 2s infinite;
+            }
+          }
+        }
+
+        @include HOVER {
+          &::before {
+            opacity: 1;
+            transform: translate(-50%, 0);
+          }
+          .dropdown__list {
+            transform: scale(1);
+          }
+        }
+      }
+    }
+  }
+}

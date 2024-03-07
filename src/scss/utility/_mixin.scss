@@ -1,0 +1,38 @@
+// MEDIA QUERY
+@mixin PC {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin SP {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin HOVER {
+  cursor: pointer;
+  @media (min-width: 768px) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: " ";
+    width: 100%;
+    padding-top: calc($height / $width) * 100%;
+  }
+  > .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
